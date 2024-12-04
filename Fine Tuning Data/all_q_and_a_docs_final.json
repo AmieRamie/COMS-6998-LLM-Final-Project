@@ -1,0 +1,298 @@
+[
+    {
+        "input": "Large Language Model",
+        "output": "A type of foundation model applied specifically to text with the ability to understand and generate human language, enabling applications such as translation, summarization, and question-answering. Foundation Model: Pre-trained on large amounts of unlabeled and self-supervised data for very general use cases."
+    },
+    {
+        "input": "Transformer",
+        "output": "A type of neural network architecture designed for handling sequences of data, particularly in natural language processing tasks. Transformers are known for their self-attention mechanism, which allows them to weigh the importance of different parts of an input sequence. They learn context and track relationships in sequential data like words in a sentence."
+    },
+    {
+        "input": "Pretraining",
+        "output": "The initial phase of training a large language model, during which the model learns general language patterns and structures from a vast corpus of text data."
+    },
+    {
+        "input": "Fine tuning",
+        "output": "The second phase of training a large language model, during which the model is fine-tuned on a smaller, domain-specific dataset to specialize in a particular task or field."
+    },
+    {
+        "input": "Tokenization",
+        "output": "The process of breaking down text into individual words or subwords, called tokens, which are then used as input for a language model."
+    },
+    {
+        "input": "Vocabulary",
+        "output": "The set of unique tokens (words or sub-words) recognized by a large language model, used for both input and output text generation."
+    },
+    {
+        "input": "Context Window",
+        "output": "The maximum number of tokens a language model can consider from the input text when generating a response or prediction."
+    },
+    {
+        "input": "Zero Shot Learning",
+        "output": "The ability of a pre-trained language model to perform a task without any additional fine-tuning or task-specific training, relying only on its general understanding of language."
+    },
+    {
+        "input": "Few Shot Learning",
+        "output": "The ability of a pre-trained language model to perform a task with minimal fine-tuning or exposure to task-specific examples."
+    },
+    {
+        "input": "Transfer Learning",
+        "output": "The process of leveraging the knowledge acquired by a model during pre-training on one task to improve performance on a different, but related, task."
+    },
+    {
+        "input": "Model Size",
+        "output": "The number of parameters (weights and biases) in a neural network, often used as a measure of the complexity and capacity of a language model."
+    },
+    {
+        "input": "Bias",
+        "output": "The presence of unfair or unjustified assumptions in a language model's output, often resulting from biases present in the training data."
+    },
+    {
+        "input": "Overfitting",
+        "output": "A situation in which a model becomes too specialized to its training data, leading to poor performance on new or unseen data."
+    },
+    {
+        "input": "Generalization",
+        "output": "The ability of a model to perform well on new, unseen data, by learning the underlying patterns and structures of the training data without memorizing specific examples."
+    },
+    {
+        "input": "Embedding",
+        "output": "Expressing words/sentences as vectors, or an array of real values that represent characteristics of the word or sentence."
+    },
+    {
+        "input": "Multitask Learning",
+        "output": "Collect a dataset of training/test/development data for a range of different tasks, training examples are of the form (dataset, objective) sampled from the distribution of dataset & objectives, in a probabilistic framework, task: estimate a conditional distribution: p(output|input, task)."
+    },
+    {
+        "input": "Positional Embedding",
+        "output": "Capturing word order."
+    },
+    {
+        "input": "One-Shot",
+        "output": "In addition to the task description, the model sees the a single example of the task."
+    },
+    {
+        "input": "RAG (Retrieval Augmented Generation)",
+        "output": "Stores knowledge in a database and if it's knowledge that the LLM can't answer, searches this database and processes it into the LLM. - Consists of vector database and embedding technology (to convert text into vectors)."
+    },
+    {
+        "input": "Seq2Seq model",
+        "output": "A special class of Recurrent Neural Network architectures that we typically use (but not restricted) to solve complex Language problems like Machine Translation, Question Answering, creating Chatbots, Text Summarization, etc."
+    },
+    {
+        "input": "Attention head",
+        "output": "A specialized mini-brain within the AI model that helps it selectively focus on certain aspects of the input data. In the context of NLP, attention heads aid in understanding the relationships between words in a sentence or a sequence of text."
+    },
+    {
+        "input": "Hallucination",
+        "output": "Incorrect information is learned and given by the LLM as a confident answer."
+    },
+    {
+        "input": "Recurrent layer",
+        "output": "A type of deep neural network where both input data and prior hidden states are fed into the network's layers, giving the network a state and hence memory. RNNs are commonly used for sequence-based or time-based data."
+    },
+    {
+        "input": "Autoregressive",
+        "output": "A model that learns from a series of timed steps and takes measurements from previous actions as inputs, in order to predict the value of the next time step."
+    },
+    {
+        "input": "Machine learning",
+        "output": "A type of artificial intelligence that leverages massive amounts of data so that computers can improve the accuracy of actions and predictions on their own without additional programming."
+    },
+    {
+        "input": "Deep Learning",
+        "output": "A subset of machine learning, which is essentially a neural network with three or more layers. These neural networks attempt to simulate the behavior of the human brain\u2014albeit far from matching its ability\u2014allowing it to \"learn\" from large amounts of data."
+    },
+    {
+        "input": "Decoder-only transformer architecture",
+        "output": "Designed to generate/create new text. Produces contextually relevant, coherent text. They receive input and they generate text relevant to that input. During pre-training, its task is to predict the next word in each sequence of text giving it the ability to understand and generate human-like text.**Tokens look at previous tokens."
+    },
+    {
+        "input": "Encoder-only transformer architecture",
+        "output": "Encoder-only models find their place in scenarios where understanding context is paramount but autoregressive generation isn't necessary (previous text doesn't really matter). By excelling in capturing contextual information, they thrive in tasks such as sentiment analysis, where interpreting the sentiment of a text requires a holistic grasp of its context. Additionally, they excel in tasks like named entity recognition, where identifying entities like names, dates, and locations demands a comprehensive understanding of the input.**Tokens look at each other."
+    },
+    {
+        "input": "Encoder-decoder transformer architecture",
+        "output": "Encoder-decoder models are typically used for natural language processing tasks that involve understanding input sequences and generating output sequences, often with different lengths and structures. They are particularly good at tasks where there is a complex mapping between the input and output sequences and where it is crucial to capture the relationships between the elements in both sequences. Some common use cases for encoder-decoder models include text translation and summarization. Good at analyzing text and somewhat good at generating."
+    },
+    {
+        "input": "Embedding layer",
+        "output": "Creates embeddings from input text."
+    },
+    {
+        "input": "Feedforward layer",
+        "output": "Multiple connected layers transform the input embeddings to glean higher-level abstractions and understand the user's intent with the text input."
+    },
+    {
+        "input": "Agents",
+        "output": "System that uses an LLM to reason through a problem, create a plan to solve the problem, and execute the plan with the help of a set of tools. They consist of an agent core, a memory module, tools, and a planning module."
+    },
+    {
+        "input": "Agent core",
+        "output": "Foundational component built around an LLM. Decision-making module that manages behavioral characteristics of the agent. Contains overall objectives, tools for execution, explanation of planning modules, memory of past questions."
+    },
+    {
+        "input": "Memory module",
+        "output": "Store of internal logs and interactions. Both short-term (sentence by sentence) memory and long-term (conversation history) memory."
+    },
+    {
+        "input": "Tools",
+        "output": "External resources, services, or third-party APIs that agents can use to execute tasks and enhance capabilities. This includes databases, knowledge bases, external models. Ex. using a RAG pipeline to generate context-aware answers, API to search information online."
+    },
+    {
+        "input": "Planning module",
+        "output": "Plans out nuanced approaches for complicated questions. -Task and question decomposition: Breaking down one question into multiple subparts-Reflection/critic: Techniques to refine execution plan."
+    },
+    {
+        "input": "Structured data",
+        "output": "Data that fits neatly into data tables and includes discrete data types such as numbers, short text, and dates."
+    },
+    {
+        "input": "Unstructured data",
+        "output": "Data that doesn't fit neatly into a data table because its size or nature: for example, audio and video files and large text documents. Also, sentences."
+    },
+    {
+        "input": "Knowledge graph",
+        "output": "Well suited for handling complex, multi-part collection since they store data as a network of nodes and the relationship between them. This connected data structure allows RAG apps to navigate from one piece of information to another efficiently, accessing all related information."
+    },
+    {
+        "input": "Information extraction pipeline",
+        "output": "Transformation of unstructured text into structured information. 1. Run input text through a coreference resolution model: Find all expressions that refer to a specific entity. 2. Entity disambiguation step: Accurately identifying and distinguishing between entities with similar names or references. 3. Identify relationships between entities. When combined with knowledge graphs, you can process each document individually and interconnect the different documents."
+    },
+    {
+        "input": "Multi-hop question-answering task",
+        "output": "LLM needs information from multiple documents/chunks of text to generate an answer. Chunking + embedding documents doesn't work because: 1. Provided documents might not necessarily contain all information to answer question fully. 2. Missing reference information: Some chunks may not contain the full context and there could be missing references. 3. Hard to identify ideal number of retrieved documents. Solution: Knowledge graphs. They're great with sorting and aggregating unstructured text data."
+    },
+    {
+        "input": "Knowledge graph nodes",
+        "output": "Represent entities."
+    },
+    {
+        "input": "Knowledge graph edges",
+        "output": "Represent relationships."
+    },
+    {
+        "input": "Why do we use a knowledge graph for RAG applications?",
+        "output": "1. Reduced workload during query time, improving latency. 2. Easier traversal and navigation through interconnected documents, enabling multi-hop reasoning. 3. Can easily absorb all types of data."
+    },
+    {
+        "input": "Which in-context learning method involves creating an initial prompt that states the task to be completed and includes a single example question with answer followed by a second question to be answered by the LLM?",
+        "output": "d. One Shot. One shot inference involves providing an example question with answer followed by a second question to be answered by the LLM. Few shot inference provides multiple example prompts and answers while zero shot provides only one prompt to be answered by the LLM."
+    },
+    {
+        "input": "Which configuration parameter for inference can be adjusted to either increase or decrease randomness within the model output layer?",
+        "output": "c. Temperature. Temperature is used to affect the randomness of the output of the softmax layer. A lower temperature results in reduced variability while a higher temperature results in increased randomness of the output."
+    },
+    {
+        "input": "Which of the following best describes the role of data parallelism in the context of training Large Language Models (LLMs) with GPUs?",
+        "output": "d. Data parallelism allows for the use of multiple GPUs to process different parts of the same data simultaneously, speeding up training time. Data parallelism is a strategy that splits the training data across multiple GPUs. Each GPU processes a different subset of the data simultaneously, which can greatly speed up the overall training time."
+    },
+    {
+        "input": "Which of the following statements about pretraining scaling laws are correct? Select all that apply.",
+        "output": "a, b & c. a. To scale our model, we need to jointly increase dataset size and model size, or they can become a bottleneck for each other. b. There is a relationship between model size (in number of parameters) and the optimal number of tokens to train the model with. c. When measuring compute budget, we can use 'PetaFlops per second-Day' as a metric."
+    },
+    {
+        "input": "Interacting with Large Language Models (LLMs) differs from traditional machine learning models. Working with LLMs involves natural language input, known as a _____, resulting in output from the Large Language Model, known as the ______.",
+        "output": "d. prompt, completion"
+    },
+    {
+        "input": "Large Language Models (LLMs) are capable of performing multiple tasks supporting a variety of use cases. Which of the following tasks supports the use case of converting code comments into executable code?",
+        "output": "c. Translation"
+    },
+    {
+        "input": "What is the self-attention that powers the transformer architecture?",
+        "output": "a. A mechanism that allows a model to focus on different parts of the input sequence during computation."
+    },
+    {
+        "input": "Which of the following stages are part of the generative AI model lifecycle mentioned in the course? (Select all that apply)",
+        "output": "b, c, d & e. b. Selecting a candidate model and potentially pre-training a custom model. c. Manipulating the model to align with specific project needs. d. Defining the problem and identifying relevant datasets. e. Deploying the model into the infrastructure and integrating it with the application."
+    },
+    {
+        "input": "'RNNs are better than Transformers for generative AI Tasks.' Is this true or false?",
+        "output": "False"
+    },
+    {
+        "input": "Which transformer-based model architecture has the objective of guessing a masked token based on the previous sequence of tokens by building bidirectional representations of the input sequence?",
+        "output": "c. Autoencoder"
+    },
+    {
+        "input": "Which transformer-based model architecture is well-suited to the task of text translation?",
+        "output": "b. Sequence-to-sequence"
+    },
+    {
+        "input": "Do we always need to increase the model size to improve its performance?",
+        "output": "False"
+    },
+    {
+        "input": "Scaling laws for pre-training large language models consider several aspects to maximize performance of a model within a set of constraints and available scaling choices. Select all alternatives that should be considered for scaling when performing model pre-training?",
+        "output": "a, c & d. a. Compute budget: Compute constraints. c. Model size: Number of parameters. d. Dataset size: Number of tokens."
+    },
+    {
+        "input": "'You can combine data parallelism with model parallelism to train LLMs.' Is this true or false?",
+        "output": "True"
+    },
+    {
+        "input": "Which of the following are true in respect to Catastrophic Forgetting? Select all that apply.",
+        "output": "b, c & d. b. Catastrophic forgetting occurs when a machine learning model forgets previously learned information as it learns new information. c. Catastrophic forgetting is a common problem in machine learning, especially in deep learning models. d. One way to mitigate catastrophic forgetting is by using regularization techniques to limit the amount of change that can be made to the weights of the model during training."
+    },
+    {
+        "input": "What is the purpose of fine-tuning with prompt datasets?",
+        "output": "d. To improve the performance and adaptability of a pre-trained language model for specific tasks."
+    },
+    {
+        "input": "'Parameter Efficient Fine-Tuning (PEFT) updates only a small subset of parameters. This helps prevent catastrophic forgetting.' True or False?",
+        "output": "True"
+    },
+    {
+        "input": "Parameter Efficient Fine-Tuning (PEFT) methods specifically attempt to address some of the challenges of performing full fine-training. Which of the following options describe challenges that PEFT tries to overcome?",
+        "output": "a, b & c. a. Computational constraints. b. Catastrophic forgetting. c. Storage requirements."
+    },
+    {
+        "input": "Fill in the blanks: __________ involves using many prompt-completion examples as the labeled training dataset to continue training the model by updating its weights. This is different from _________ where you provide prompt-completion examples during inference.",
+        "output": "d. Instruction fine-tuning, In-context learning"
+    },
+    {
+        "input": "Fine-tuning a model on a single task can improve model performance specifically on that task; however, it can also degrade the performance of other tasks as a side effect. This phenomenon is known as:",
+        "output": "d. Catastrophic forgetting"
+    },
+    {
+        "input": "Which evaluation metric below focuses on precision in matching generated output to the reference text and is used for text translation?",
+        "output": "b. BLEU"
+    },
+    {
+        "input": "Which of the following statements about multi-task finetuning is correct? Select all that apply.",
+        "output": "a & d. a. FLAN-T5 was trained with multi-task finetuning. d. Multi-task finetuning can help prevent catastrophic forgetting."
+    },
+    {
+        "input": "'Smaller LLMs can struggle with one-shot and few-shot inference:' Is this true or false?",
+        "output": "True"
+    },
+    {
+        "input": "Which of the following are Parameter Efficient Fine-Tuning (PEFT) methods? Select all that apply.",
+        "output": "a, b & d. a. Reparameterization. b. Additive. d. Selective."
+    },
+    {
+        "input": "Which of the following best describes how LoRA works?",
+        "output": "c. LoRA decomposes weights into two smaller rank matrices and trains those instead of the full model weights."
+    },
+    {
+        "input": "What is a soft prompt in the context of LLMs (Large Language Models)?",
+        "output": "a. A set of trainable tokens that are added to a prompt and whose values are updated during additional training to improve performance on specific tasks."
+    },
+    {
+        "input": "'Prompt Tuning is a technique used to adjust all hyperparameters of a language model.' Is this true or false?",
+        "output": "False"
+    },
+    {
+        "input": "'PEFT methods can reduce the memory needed for fine-tuning dramatically, sometimes to just 12-20% of the memory needed for full fine-tuning.' Is this true or false?",
+        "output": "True"
+    },
+    {
+        "input": "When using Reinforcement Learning with Human Feedback (RLHF) to align large language models with human preferences, what is the role of human labelers?",
+        "output": "b. To score prompt completions, so that this score is used to train the reward model component of the RLHF process."
+    },
+    {
+        "input": "How can RLHF align the performance of large language models with human preferences? Select all that apply",
+        "output": "b & c. b. RLHF can help reduce model toxicity and misinformation. c. RLHF can enhance the interpretability of generated text."
+    }
+]

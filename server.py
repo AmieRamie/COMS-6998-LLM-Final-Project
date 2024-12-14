@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify
 import os
+import re
 import openai
 import chromadb
 from chromadb.config import Settings
@@ -74,15 +75,25 @@ def run_rag_CoT(model, query):
     retrieved_text = retrieve_relevant_documents(query)
     all_messages = [
         {"role": "system", "content": "You are a helpful tutor who answers questions about a class called Introduction to Deep Learning and LLM based Generative AI Systems"},
+        {"role": "user", "content": f"Break down the following question step by step before giving me the final answer. Separate the final answer from the breakdown using 'FINAL ANSWER:'.\n\n"},
         {"role": "user", "content": f"Please answer the following question step-by-step using the given context:\n\n {query}\n\n {"="*50}\n\nCONTEXT: {retrieved_text}\n\n"},
-        {"role": "user", "content": f"Remember to break down the question step by step before giving me the final answer"}
     ]
     response = client.chat.completions.create(
         model=model,
         messages=all_messages,
         max_tokens=1500,
     )
-    return response.choices[0].message.content
+    model_response_text = response.choices[0].message.content
+
+    # Use RegEx to isolate the text after 'ANSWER:'
+    match = re.search(r'FINAL ANSWER:(.*)', model_response_text, re.DOTALL)
+    if match:
+        final_answer = match.group(1).strip()
+    else:
+        # If 'ANSWER:' is not found, log and return the entire response as a fallback
+        final_answer = model_response_text
+
+    return final_answer
 
 def run_rag_self_consistency(model, query, num_samples=5):
     self_consistency_responses = []
@@ -91,7 +102,7 @@ def run_rag_self_consistency(model, query, num_samples=5):
         self_consistency_responses.append(response)
 
     response_text = "\n".join(
-        [f"{i + 1}. {resp}" for i, resp in enumerate(self_consistency_responses)]
+        [f"{resp}" for resp in self_consistency_responses]
     )
 
     consistency_prompt = f"Please return the text of the best response to the question:\n\n{query}\n\n\n{response_text}"

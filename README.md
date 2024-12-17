@@ -1,4 +1,103 @@
-# TA LLM: Retrieval-Augmented Generation Chat Application
+# Data Augmentation
+Data scarcity is a significant barrier to fine-tuning models for most courses. This course, for example, has only a dozen to two dozen files to act as base context. To overcome this, we developed a methodology to augment existing course material with additional context
+
+## Process
+
+1. **Topic Mining from Syllabus:** The course syllabus was processed using GPT-4o to extract key topics. Some extracted topics include: “synchronous vs asynchronous SGD,” “motivation and use of attention in LLMs,” and “serving systems for fine-tuned models.” These topics provide a focused framework for identifying relevant external resources.
+2. **Augmenting with Blog Posts and Research Articles:** Using a SerpAPI, blog posts and research articles related to each of the mined topics were retrieved from Google.
+3. **Ingesting Class Presentation Data:** All class presentation PDFs were parsed to extract linked blog posts and research articles, creating a secondary set of data.
+4. **Combining Datasets:** The retrieved and ingested data were combined into a single, comprehensive dataset to augment the limited base material available for the course.
+5. **Preparation for Fine-Tuning and RAG:** This augmented dataset was used both to generate synthetic Q/A pairs for fine-tuning and to populate a vector database for RAG.
+
+## Prerequisites
+
+1. Python 3.8 or higher
+2. Google Document AI API access
+3. OpenAI key for extracting topics
+
+## Code
+Sections 1-4 of Extracting Text from PDFs.ipynb walks through how to do this
+
+# Creating a Synthetic Dataset
+To generate synthetic Q/A pairs, we used the augmented context and primary course data. We focused on building an open answer quiz Q/A dataset to aim to make the system better at answering questions students would likely face during the time in their respective courses. Hypothetically, we could have prompted the synthetic data creation LLM to create multiple choice Q/As or prompted to make longer, more open ended Q/A’s. In future iterations of this we would like to implement that. Here is the process we implemented:
+
+## Process
+
+1. **Scraping Data from Secondary Data:** The text from every blog post and research article link was scraped
+2. **Document Processing:** Each document was passed into GPT-4o, along with prompts specifying the course context, key concepts, and desired Q/A format (quiz questions and answers). The prompt instructed the model to “create up to 10 open-ended quiz questions and answers using the data provided.”
+3. **Output Generation:** GPT-4o generated Q/A pairs for each document. These were split into training and test sets.
+4. **Dataset Composition:** The final dataset consisted of about 3,700 training examples and 2,500 test examples, following a 60/40 train-test split. This dataset was designed to emulate the types of questions students might encounter or be tested on during their course.
+
+## Prerequisites
+
+1. Python 3.8 or higher
+2. requests package
+3. OpenAI key for creating synthetic Q/A pairs
+
+## Code
+Sections 5 & 7 of Extracting Text from PDFs.ipynb walks through how to do this
+
+<img width="1066" alt="image" src="https://github.com/user-attachments/assets/d366963b-68e2-4853-822a-016edaa0a387" />
+Process of gathering secondary data and creating synthetic data
+
+#Fine-Tuning Process
+For the Q/A generation process we wanted to use a larger, complex model to get the best synthetic Q/A pairs. For the base model, and the model we wanted to fine-tune we wanted to use a lightweight and cheaper model, to make the economics of tuning and inference more viable for commercial use. Due to this we ended up fine-tuning GPT-4o mini using the OpenAI api. We could have gone with any pretrained model, but we went with this specific one because of its cost effectiveness and OpenAI’s API simplicity. Furthermore, because we were able to generate a large number of synthetic Q/A training examples, we wanted a fine-tuning API that would allow us to do full fine-tuning cheaply. In future iterations, it may be worth seeing how a PEFT model would have performed. Here is the process we used:
+
+## Process
+
+1. **Data Formatting:** The synthetic training Q/A pairs were formatted according to OpenAI’s API requirements.
+2. **Model Training:** The formatted JSON file was uploaded to OpenAI’s fine-tuning API to train the GPT-4o mini model.
+3. **Inference:** The fine-tuned model was deployed on OpenAI’s servers, where it was used for downstream tasks.
+
+## Prerequisites
+
+1. Python 3.8 or higher
+2. OpenAI key for hosting training data and fine tuning model
+
+## Code
+Sections 1-2 of Fine-tuning Open AI Model.ipynb walks through how to do this
+
+#Creating RAG Data
+To enhance contextual accuracy, we implemented a RAG pipeline using the augmented  secondary blog post/research article dataset (that we also used to create the synthetic Q/A data set):
+
+## Process
+
+1. **Chunking and Embedding:** All blog posts and research articles were chunked into smaller segments and embedded using OpenAI’s text-embedding-3-large model.
+2. **Vector Database:** The embeddings were stored in a local vector database for efficient retrieval.
+3. **Query Processing and Inference:** During inference, user queries were processed to retrieve the 15 most similar chunks from the vector database. These chunks, along with the query and original context, were concatenated and passed into either the baseline GPT-4o mini model or the fine-tuned version for response generation.
+
+## Prerequisites
+
+1. Python 3.8 or higher
+
+## Code
+Sections 6 of Extracting Text from PDFs.ipynb walks through how to do this
+
+#Evaluation Methodology
+Two metrics were employed to evaluate system performance. In order to get a deeper understanding of how semantically similar the system variant outputs were as compared to the expected output in the synthetic Q/A test set we employed an embedding similarity metric. We also evaluated each variant using a traditional ROUGE-L Sum score.
+
+## Process
+
+1. Embedding Similarity:
+      a. For each test example, the question was passed to a system variant to generate a predicted answer.
+      b. Both the predicted answer and the expected answer were embedded using text-embedding-3-large.
+      c. Cosine similarity was calculated between the two embeddings to measure semantic alignment.
+3. ROUGE-L Sum:
+      a. ROUGE-L scores were calculated between the predicted and expected answers.
+      b. Scores were summed across all test examples to assess overall alignment.
+
+## Prerequisites
+
+1. Python 3.8 or higher
+2. OpenAI key for getting predicted outputs from system variant
+
+## Code
+Evaluating Fine TUned Model.ipynb walks through how to set up the evlauation system. Only the non-RAG variants were tested in this notebook, but you can plug any system variant into sections 4-6
+
+<img width="1038" alt="image" src="https://github.com/user-attachments/assets/1f536402-53cd-4780-acc5-a7e7ed080243" />
+How our embedding semantic similarity scoring works
+
+# Retrieval-Augmented Generation Chat Application
 
 TA LLM is a chat-based application designed to answer questions about **Introduction to Deep Learning and LLM-based Generative AI Systems** using retrieval-augmented generation (RAG). The application integrates OpenAI's GPT-4o-mini models, ChromaDB for document retrieval, and a Chain-of-Thought (CoT) reasoning mechanism to provide comprehensive and accurate responses.
 

@@ -38,6 +38,7 @@ To generate synthetic Q/A pairs, we used the augmented context and primary cours
 Sections 5 & 7 of Extracting Text from PDFs.ipynb walks through how to do this
 
 <img width="1066" alt="image" src="https://github.com/user-attachments/assets/d366963b-68e2-4853-822a-016edaa0a387" />
+### Process of gathering secondary data and building a synthetic dataset
 
 #Fine-Tuning Process
 For the Q/A generation process we wanted to use a larger, complex model to get the best synthetic Q/A pairs. For the base model, and the model we wanted to fine-tune we wanted to use a lightweight and cheaper model, to make the economics of tuning and inference more viable for commercial use. Due to this we ended up fine-tuning GPT-4o mini using the OpenAI api. We could have gone with any pretrained model, but we went with this specific one because of its cost effectiveness and OpenAI’s API simplicity. Furthermore, because we were able to generate a large number of synthetic Q/A training examples, we wanted a fine-tuning API that would allow us to do full fine-tuning cheaply. In future iterations, it may be worth seeing how a PEFT model would have performed. Here is the process we used:
